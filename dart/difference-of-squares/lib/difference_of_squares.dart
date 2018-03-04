@@ -1,15 +1,8 @@
 class DifferenceOfSquares {
-  
-  int squareOfSums(int val) {
-    int res = 0;
-    for (int i = 1; i <= val; i++) res += i;
-    return res * res;
-  }
-  
-  int sumOfSquares(int val) {
-    int res = 0;
-    for (int i = 1; i <= val; i++) res += i * i;
-    return res;
-  }
+  list(val) => new Iterable.generate(val, (i) => i + 1);
+  square(val) => val * val;
+  sum(left, right) => left + right;
+  squareOfSums(int val) => square(list(val).reduce(sum));
+  sumOfSquares(int val) => list(val).map(square).reduce(sum);
   difference(int val) => squareOfSums(val) - sumOfSquares(val);
 }
