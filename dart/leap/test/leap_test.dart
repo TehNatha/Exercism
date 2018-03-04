@@ -13,18 +13,18 @@ void main() {
       final year = new Year(1996);
 
       expect(year.isLeap(), equals(true));
-    }, skip: true);
+    });
 
     test("is skipped every 100 years to remove an extra day", () {
       final year = new Year(2100);
 
       expect(year.isLeap(), equals(false));
-    }, skip: true);
+    });
 
     test("is reintroduced every 400 years to adjust another day", () {
       final year = new Year(2000);
 
       expect(year.isLeap(), equals(true));
-    }, skip: true);
+    });
   });
 }
