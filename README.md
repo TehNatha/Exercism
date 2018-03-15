@@ -1,2 +1,2 @@
 # Exercism
-[Profile](http://exercism.io/TehNatha|
+[Profile](http://exercism.io/TehNatha)
