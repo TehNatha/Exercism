@@ -2,9 +2,11 @@ import 'dart:math';
 
 class PrimeFactors {
   List<int> factors(int value) {
-    if (value % 2 == 0)
-      return [2, (value/2).floor()];
-    else if (value == 1)
+    if (value % 2 == 0){
+        List<int> result = [2];
+        result.addAll(factors((value/2).floor()));
+        return result;
+    } else if (value == 1)
       return [];
 
     for (int i = 3; i <= (sqrt(value)).floor(); i += 2)
