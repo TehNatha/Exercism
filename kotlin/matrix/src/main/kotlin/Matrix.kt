@@ -6,7 +6,7 @@ class Matrix(private val matrixAsString: String) {
     private val matrix: List<List<Int>> by lazy { matrixAsString.toMatrix() }
 
     internal fun String.toMatrix(): List<List<Int>> =
-        matrixAsString
+        this
             .split(rowDelimiter)
             .map {
                     it
