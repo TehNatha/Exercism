@@ -1,6 +1,6 @@
 object ScrabbleScore {
 
-    fun scoreLetter(c: Char): Int = when(c) {
+    fun scoreLetter(c: Char) = when(c) {
         'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'
             -> 1
         'D', 'G'
@@ -18,10 +18,8 @@ object ScrabbleScore {
             -> throw IllegalArgumentException("Agrument must be a letter")
     }
 
-    fun scoreWord(word: String): Int = 
+    fun scoreWord(word: String) = 
         word
-        .toUpperCase()
-        .toCharArray()
-        .map { scoreLetter(it) }
-        .sum();
+            .uppercase()
+            .sumOf { scoreLetter(it) }
 }
