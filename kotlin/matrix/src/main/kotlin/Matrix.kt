@@ -7,10 +7,10 @@ class Matrix(private val matrixAsString: String) {
 
     internal fun String.toMatrix(): List<List<Int>> =
         this.toMatrixRowStrings()
-            .map { it.matrixRowStringToRow() }
+            .map { it.fromMatrixRowStringToRow() }
 
     internal fun String.toMatrixRowStrings(): List<String> = this.split(rowDelimiter).map { it.trim() }
-    internal fun String.fromMatrixRowStringToRow() = this.split(colDelimiter).map { it.toInt() }
+    internal fun String.fromMatrixRowStringToRow(): List<Int> = this.split(colDelimiter).map { it.toInt() }
 
     fun column(colNr: Int): List<Int> = matrix.map { it[colNr - 1] }
 
