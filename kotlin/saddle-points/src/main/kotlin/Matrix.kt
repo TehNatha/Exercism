@@ -19,17 +19,13 @@ class Matrix(private val matrix: List<List<Int>>) {
     private fun col(colIndex: Int) = matrix.map { row -> row[colIndex] }
 
     val saddlePoints: Set<MatrixCoordinate> = allCoordinates
-            .filter { coord -> coord.isSmallestInCol && coord.isLargestInRow }
+            .filter { coord -> coord.isMinInCol && coord.isMaxInRow }
             .toSet()
 
-    private val MatrixCoordinate.isLargestInRow
-        get() = rowSiblings.none { it > value }
-    private val MatrixCoordinate.isSmallestInCol
-        get() = colSiblings.none { it < value }
-    private val MatrixCoordinate.rowSiblings
-        get() = row(rowIndex).filterIndexed { index, _ -> index != colIndex  }
-    private val MatrixCoordinate.colSiblings
-        get() = col(colIndex).filterIndexed { index, _ -> index != rowIndex  }
+    private val MatrixCoordinate.isMaxInRow
+        get() = value == row(rowIndex).maxOrNull()
+    private val MatrixCoordinate.isMinInCol
+        get() = value == col(colIndex).minOrNull()
     private val MatrixCoordinate.value
         get() = matrix[rowIndex][colIndex]
     private val MatrixCoordinate.rowIndex
