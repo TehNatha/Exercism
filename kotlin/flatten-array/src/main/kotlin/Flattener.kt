@@ -6,11 +6,11 @@ object Flattener {
     }
 
     private fun Collection<*>.flatten(init: MutableList<Any> = MutableList(0) {}): MutableList<Any> =
-            this.fold(init) {
-                accumulator, value -> when (value) {
-                    is List<*> -> value.flatten(accumulator)
-                    is Int -> accumulator.apply { add(value) }
-                    else -> accumulator
+            filterNotNull()
+                .fold(init) {
+                    accumulator, value -> when (value) {
+                        is List<*> -> value.flatten(accumulator)
+                        else -> accumulator.apply { add(value) }
+                    }
                 }
-            }
 }
